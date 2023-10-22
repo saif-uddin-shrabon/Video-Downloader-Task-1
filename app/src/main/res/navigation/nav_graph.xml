@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/downlad"
-        android:name="com.cmed.myapplication.Download"
+        android:name="com.cmed.myapplication.View.Download"
         android:label="fragment_downlad"
         tools:layout="@layout/fragment_downlad" />
 </navigation>
