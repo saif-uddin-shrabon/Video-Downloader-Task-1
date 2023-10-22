@@ -13,7 +13,7 @@
             android:layout_gravity="center">
 
             <ProgressBar
-                android:id="@+id/progressBar"
+                android:id="@+id/progressBarnoti"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
@@ -24,7 +24,7 @@
                 android:progressDrawable="@drawable/horizontal_progressbar" />
 
             <TextView
-                android:id="@+id/progresttext"
+                android:id="@+id/progresttextnoti"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="190dp"
