@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/downlad">
+
+    <fragment
+        android:id="@+id/downlad"
+        android:name="com.cmed.myapplication.Download"
+        android:label="fragment_downlad"
+        tools:layout="@layout/fragment_downlad" />
+</navigation>
