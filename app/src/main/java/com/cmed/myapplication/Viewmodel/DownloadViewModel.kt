@@ -20,6 +20,7 @@ import com.cmed.myapplication.View.MainActivity
 
 class DownloadViewModel : ViewModel() {
 
+
     private val CHANNEL_ID = "Download_Channel"
 
     // declaring variables
@@ -45,17 +46,16 @@ class DownloadViewModel : ViewModel() {
         notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notificationSoundUri: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
-     //   val notificationLayoutExpanded = RemoteViews(requireContext().packageName, R.layout.notification_large)
 
 
 
-        val intent = Intent(context, MainActivity::class.java) // Replace with your main activity
+        val intent = Intent(context, Download::class.java)
         val pendingIntent = PendingIntent.getActivity(context, 0, intent,
             PendingIntent.FLAG_IMMUTABLE)
 
         val customNotification =
             NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.notification_icon) // Replace with your icon
+                .setSmallIcon(R.drawable.notification_icon)
                 .setStyle(NotificationCompat.DecoratedCustomViewStyle())
                 .setContentTitle("Downloading..")
                 .setContentIntent(pendingIntent)
@@ -68,5 +68,7 @@ class DownloadViewModel : ViewModel() {
 
         notificationManager.notify(NOTIFICATION_ID, customNotification)
     }
+
+
 
 }

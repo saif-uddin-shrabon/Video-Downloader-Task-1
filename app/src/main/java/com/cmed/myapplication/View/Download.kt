@@ -19,6 +19,7 @@ import android.widget.RemoteViews
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import com.cmed.myapplication.R
 import com.cmed.myapplication.Viewmodel.DownloadViewModel
 
@@ -41,6 +42,8 @@ class Download : Fragment() {
     val STORAGE_DIRECTORY = "/Download/DEMC"
 
     var progress : Int? = null
+    var progressLiveData = MutableLiveData<Int>()
+
 
 
     override fun onCreateView(
@@ -74,7 +77,7 @@ class Download : Fragment() {
 
 
             val filename = System.currentTimeMillis().toString().replace(":",".")+".mp4"
-            downloadFile("https://www.shutterstock.com/shutterstock/videos/1102318137/preview/stock-footage-mud-and-dust-flying-green-screen-effect-video-dust-dust-blown-green-screen-video-gust-and-dust.webm", filename)
+            downloadFile("https://file-examples.com/storage/fe1134defc6538ed39b8efa/2017/04/file_example_MP4_1920_18MG.mp4", filename)
         }
 
     }
@@ -125,7 +128,12 @@ class Download : Fragment() {
 
                     }
 
-                    downloadViewModel.updateNotification(requireContext(), progress!!)
+
+                       downloadViewModel.updateNotification(requireContext(), progress!!)
+
+
+                    progressLiveData.postValue(progress)
+
 
 
                     outputStream.write(buffer, 0, bytes)
@@ -144,10 +152,11 @@ class Download : Fragment() {
 
 
 
+  override  fun onStop() {
+        super.onStop()
 
-    override fun onPause() {
-        super.onPause()
-          downloadViewModel.updateNotification(requireContext(), progress ?: 0)
+       downloadViewModel.updateNotification(requireContext(), progress ?: 0)
+
     }
 
     override fun onDestroyView() {
